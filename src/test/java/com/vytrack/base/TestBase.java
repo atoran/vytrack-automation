@@ -97,8 +97,8 @@ public abstract class TestBase {
             test.addScreenCaptureFromPath(screenshot);
         }
 
-//        BrowserUtils.wait(3);
-//        Driver.closeDriver();
+
+        Driver.closeDriver();
         softAssert.assertAll();
     }
 

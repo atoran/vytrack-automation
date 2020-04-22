@@ -35,7 +35,7 @@ public class BrowserUtils{
     }
 
     public static void waitForUIOverlay(){
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 2);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 4);
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loader-mask.shown")));
     }
 
@@ -70,4 +70,6 @@ public class BrowserUtils{
         FileUtils.copyFile(source, finalDestination);
         return target;
     }
+
+
 }

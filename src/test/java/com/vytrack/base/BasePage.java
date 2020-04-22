@@ -1,5 +1,6 @@
 package com.vytrack.base;
 
+import com.vytrack.utilities.BrowserUtils;
 import com.vytrack.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -23,7 +24,10 @@ public abstract class BasePage {
     public WebElement pageName;
 
     @FindBy(xpath = "//li[@id='user-menu']/a")
-    WebElement accountHolderName;
+    public WebElement accountHolderName;
+
+    @FindBy(linkText = "Logout")
+    public WebElement logOutButton;
 
     public void changeMenu(String menu1, String menu2) {
         String menu1X = "//span[contains(text(), '"+menu1+"')][@class='title title-level-1']";
@@ -39,6 +43,10 @@ public abstract class BasePage {
 
         wait.until(ExpectedConditions.elementToBeClickable(menu2El));
         menu2El.click();
+    }
 
+    public void logOut(){
+        accountHolderName.click();
+        logOutButton.click();
     }
 }
