@@ -1,6 +1,7 @@
 package com.vytrack.tests.component_tests.activities;
 
 import com.vytrack.base.TestBase;
+import com.vytrack.utilities.BrowserUtils;
 import org.testng.annotations.Test;
 
 public class DateAndTimeTests extends TestBase {
@@ -22,6 +23,11 @@ public class DateAndTimeTests extends TestBase {
         loginPage.login(usernameDriver, password);
 
         basePage.changeMenu("Activities", "Calendar Events");
+
+        BrowserUtils.waitForUIOverlay();
+        calendarEventsPage.createCalendarEvents.click();
+
+        calendarEventsPage.startDate.click();
     }
 
 

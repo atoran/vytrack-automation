@@ -47,6 +47,7 @@ public abstract class TestBase {
     protected VehiclesPage vehiclesPage;
     protected AccountsPage accountsPage;
     protected ContactsPage contactsPage;
+    protected CalendarEventsPage calendarEventsPage;
 
     @BeforeMethod
     public void setUp(){
@@ -80,6 +81,7 @@ public abstract class TestBase {
         vehiclesPage = new VehiclesPage();
         accountsPage = new AccountsPage();
         contactsPage = new ContactsPage();
+        calendarEventsPage = new CalendarEventsPage();
 
     }
 
