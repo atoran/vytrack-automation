@@ -35,7 +35,7 @@ public class BrowserUtils{
     }
 
     public static void waitForUIOverlay(){
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 4);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 5);
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loader-mask.shown")));
     }
 

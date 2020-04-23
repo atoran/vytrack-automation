@@ -53,6 +53,33 @@ public class LoginTest extends TestBase {
         assertEquals(basePage.pageName.getText(), "Quick Launchpad");
 // TODO A different	name	should	be	displayed	on	top	right
         String driverName = basePage.accountHolderName.getTagName();
-        assertNotEquals(driverName, salesManagerName);
+        assertNotEquals(driverName, salesManagerName, "driver name and sales manager name is same");
+    }
+
+    /*
+    TEST CASE: Login test (negative)
+    1.	Open Vytrack login page
+    2.	Enter valid username and invalid password information
+    3.	Click login
+    4.	Message Invalid user name or password. should be displayed
+    5.	Page title and url should be same
+     */
+    @Test
+    public void negative(){
+        test = report.createTest("Log In Test - Negative Scenario");
+
+        String pageTitle = driver.getTitle();
+
+        test.info("Login with valid Username: " +usernameDriver +" and invalid Password: 123456yhnbvbnm");
+        loginPage.login(usernameDriver, "123456yhnbvbnm");
+
+        test.info("Verify Message Invalid user name or password. should be displayed");
+        assertEquals(loginPage.errorMessage.getText(), "Invalid user name or password.");
+
+        test.info("Verify the page title should be same");
+        assertEquals(driver.getTitle(), pageTitle);
+
+        test.info("Verify the url should be same");
+        assertEquals(driver.getCurrentUrl(), url);
     }
 }

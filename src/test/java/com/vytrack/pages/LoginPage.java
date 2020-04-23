@@ -23,6 +23,9 @@ public class LoginPage {
     @FindBy(id = "_submit")
     public WebElement logInButton;
 
+    @FindBy(xpath = "//div[.='Invalid user name or password.']")
+    public WebElement errorMessage;
+
     public void login(String username, String password){
         userNameBox.sendKeys(username);
         passwordBox.sendKeys(password);
