@@ -2,10 +2,7 @@ package com.vytrack.utilities;
 
 
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -35,8 +32,12 @@ public class BrowserUtils{
     }
 
     public static void waitForUIOverlay(){
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 5);
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loader-mask.shown")));
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 4);
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".loader-mask.shown")));
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loader-mask.shown")));
+        }catch (TimeoutException e){
+        }
     }
 
     /**

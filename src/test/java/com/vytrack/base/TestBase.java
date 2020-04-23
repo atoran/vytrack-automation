@@ -98,7 +98,7 @@ public abstract class TestBase {
         }
 
 
-        Driver.closeDriver();
+//        Driver.closeDriver();
         softAssert.assertAll();
     }
 

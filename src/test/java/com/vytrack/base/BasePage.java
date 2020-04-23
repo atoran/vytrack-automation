@@ -29,6 +29,9 @@ public abstract class BasePage {
     @FindBy(linkText = "Logout")
     public WebElement logOutButton;
 
+    @FindBy(xpath = "//div[text() ='You do not have permission to perform this action.']")
+    public WebElement noPermissionMessage;
+
     public void changeMenu(String menu1, String menu2) {
         String menu1X = "//span[contains(text(), '"+menu1+"')][@class='title title-level-1']";
         WebElement menu1El = Driver.getDriver().findElement(By.xpath(menu1X));
