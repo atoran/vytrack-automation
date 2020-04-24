@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.*;
 
 public class DateAndTimeTests extends TestBase {
 
@@ -60,6 +60,27 @@ public class DateAndTimeTests extends TestBase {
 
     @Test
     public void futureTime(){
+        test = report.createTest("Future Time Test");
+
+        test.info("Log in as a driver by using username: "+usernameDriver+" and password: "+password );
+        loginPage.login(usernameDriver, password);
+
+        test.info("Going to Calendar Events page");
+        BrowserUtils.waitForUIOverlay();
+        basePage.changeMenu("Activities", "Calendar Events");
+
+        test.info("Clicking on Create Calendar Events Button");
+        calendarEventsPage.createCalendarEvents.click();
+
+        calendarEventsPage.startTime.click();
+
+        BrowserUtils.wait(2);
+
+        calendarEventsPage.chooseDifferentStartTime();
+
+
+        assertEquals(calendarEventsPage.checkTheTimeDifference(), 1);
+
 
     }
 

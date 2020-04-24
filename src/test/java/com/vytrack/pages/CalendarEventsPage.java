@@ -24,6 +24,16 @@ public class CalendarEventsPage extends BasePage {
     public WebElement endDate;
 
 
+    @FindBy(xpath = "//input[contains(@id, 'time_selector_oro_calendar_event_form_start-uid')]")
+    public WebElement startTime;
+
+    @FindBy(xpath = "//input[contains(@id, 'time_selector_oro_calendar_event_form_end-uid')]")
+    public WebElement endTime;
+
+    //li[contains(@class, 'ui-timepicker')]
+
+    @FindBy(xpath = "//li[contains(@class, 'ui-timepicker')]")
+    public List<WebElement> listOfTimesEl;
 
 
 
@@ -104,6 +114,29 @@ public class CalendarEventsPage extends BasePage {
         currentDay.click();
     }
 
+    public void chooseDifferentStartTime(){
+
+        String selectedTime = startTime.getAttribute("value");
+
+        for (WebElement element:listOfTimesEl) {
+
+            if(!element.getAttribute("value").equals(selectedTime)){
+                element.click();
+                break;
+            }
+
+        }
+    }
+
+    public int checkTheTimeDifference(){
+        int startTime = Integer.parseInt(this.startTime.getAttribute("value").split(":")[0]);
+        int endTime = Integer.parseInt(this.endTime.getAttribute("value").split(":")[0]);
+
+        if(startTime==12){
+            startTime =0;
+        }
+        return endTime-startTime;
+    }
 
     }
 
