@@ -2,7 +2,11 @@ package com.vytrack.tests.component_tests.activities;
 
 import com.vytrack.base.TestBase;
 import com.vytrack.utilities.BrowserUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertEquals;
 
 public class DateAndTimeTests extends TestBase {
 
@@ -24,10 +28,39 @@ public class DateAndTimeTests extends TestBase {
 
         basePage.changeMenu("Activities", "Calendar Events");
 
-        BrowserUtils.waitForUIOverlay();
+        BrowserUtils.waitElementToBeClickable(calendarEventsPage.createCalendarEvents);
         calendarEventsPage.createCalendarEvents.click();
 
         calendarEventsPage.startDate.click();
+
+        calendarEventsPage.chooseFutureDate();
+
+        BrowserUtils.wait(3);
+
+        assertEquals(calendarEventsPage.startDate.getAttribute("value"),
+                calendarEventsPage.endDate.getAttribute("value"));
+
+        calendarEventsPage.startDate.click();
+
+        calendarEventsPage.chooseTodaysDate();
+
+        assertEquals(calendarEventsPage.startDate.getAttribute("value"),
+                calendarEventsPage.endDate.getAttribute("value"));
+
+    }
+
+    /*
+    Test-2:	Date Time, End time auto adjust
+    1.	Log in as Valid user
+    2.	Go to Activities -> Calendar Events
+    3.	Click on create new calendar event
+    4.	Change the start time to any other time
+    5.	Verify that end time changes exactly 1 hours later
+     */
+
+    @Test
+    public void futureTime(){
+
     }
 
 
