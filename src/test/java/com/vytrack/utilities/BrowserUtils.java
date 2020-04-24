@@ -33,23 +33,15 @@ public class BrowserUtils{
 
     public static void waitForUIOverlay(){
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 5);
-
-        try {
-            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loader-mask shown']")));
-        }catch (TimeoutException e){
-            e.printStackTrace();
-            System.out.println("waitForUIOverlay method has a time out exception in BrowserUtils class");
-        }
-
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loader-mask shown']")));
 
         }
+
 
     public static void waitElementToBeClickable (WebElement webElement){
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 5);
-
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loader-mask shown']")));
         wait.until(ExpectedConditions.elementToBeClickable(webElement));
-
     }
 
     /**
